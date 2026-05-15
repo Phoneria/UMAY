@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>html { scrollbar-gutter: stable; }
+</style>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Our partners | PURA Defence</title>
+
+  
+  <meta name="description" content="Meet the valued partners who support PURA Defence in developing cutting-edge drone technologies and innovation.">
+  <meta name="keywords" content="PURA partners, drone partners, TUBITAK, Hacettepe Teknokent, T3 Vakfı, Ulsan Holding, Tesa, innovation partners">
+  <meta name="author" content="PURA Defence">
+
+ 
+  <meta property="og:title" content="Our partners | PURA Defence">
+  <meta property="og:description" content="Discover the institutions and companies that empower PURA Defence's journey in technology and innovation.">
+  
+  <meta property="og:url" content="https://www.purauav.com.tr/Our%20partners.html"> 
+  <meta property="og:type" content="website">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Our partners | PURA Defence">
+  <meta name="twitter:description" content="We proudly present our partners – the power behind our UAV innovations.">
+  
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.6.0/tsparticles.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="shortcut icon" href="gorseller/logo/logo.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #2D6A3F;
+            --secondary: #10b981;
+            --dark: #1C2230;
+            --darker: #1C2230;
+            --light: #f8fafc;
+            --accent: #aeabac;
+            --gradient-1: linear-gradient(135deg, #163985, #8f527d);
+            --gradient-2: linear-gradient(135deg, #607dac, #069d8b);
+            --gradient-3: linear-gradient(135deg, #0e1d4b, #6e6904);
+            --primary-light: #2D6A3F;
+            --primary-dark: #1A3D26;
+            --secondary-light: #5A5F63;
+            --gray: #A5AFB8;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #0ea5e9;
+            --error: #ef4444;
+            --gradient-primary: linear-gradient(135deg, #2D6A3F, #1A3D26);
+            --gradient-dark: radial-gradient(circle at center, var(--dark), var(--darker));
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 30px rgba(45, 106, 63, 0.2);
+            --transition-fast: all 0.2s ease;
+            --transition-normal: all 0.3s ease;
+            --transition-slow: all 0.5s ease;
+            --blur-sm: 5px;
+            --blur-md: 10px;
+            --blur-lg: 20px;
+            --navbar-height: 80px;
+            --navbar-bg: rgba(28, 34, 48, 0.95);
+            --navbar-blur: var(--blur-md);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1.5rem;
+            --radius-full: 9999px;
+            --z-navbar: 1000;
+            --z-modal: 1100;
+            --z-mobile-menu: 999;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scrollbar Stilleri */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Navbar Stilleri */
+        
+        /* ── LANGUAGE + HAMBURGER WRAPPER ── */
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 0.75rem;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--navbar-height);
+            z-index: var(--z-navbar);
+            transition: var(--transition-normal);
+        }
+
+        .navbar-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--navbar-bg);
+            backdrop-filter: blur(var(--navbar-blur));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transform: translateY(-100%);
+            transition: var(--transition-normal);
+            z-index: -1
+        }
+
+        .navbar.scrolled .navbar-bg {
+            transform: translateY(0);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .navbar-brand {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 70px;
+            transition: var(--transition-normal);
+            filter: brightness(1);
+        }
+
+        .navbar-logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2) drop-shadow(0 0 10px var(--primary-light));
+        }
+
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .navbar-link {
+            color: var(--light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-full);
+            position: relative;
+            transition: var(--transition-normal);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease, left 0.3s ease;
+            transform: translateY(5px);
+            border-radius: var(--radius-full);
+            opacity: 0;
+        }
+
+        .navbar-link:hover::before,
+        .navbar-link.active::before {
+            width: 80%;
+            left: 10%;
+            opacity: 1;
+            box-shadow: 0 0 10px var(--primary-light);
+        }
+
+        .navbar-link:hover,
+        .navbar-link.active {
+            color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Mobile Toggle Button */
+        .navbar-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+            background: transparent;
+            border: none;
+            width: 45px;
+            height: 45px;
+            position: relative;
+            transition: var(--transition-normal);
+            border-radius: var(--radius-md);
+        }
+
+        .toggle-icon {
+            width: 30px;
+            height: 24px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-icon span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: #fff;
+            position: absolute;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-icon span:nth-child(1) {
+            top: 0;
+        }
+
+        .toggle-icon span:nth-child(2) {
+            top: 10px;
+        }
+
+        .toggle-icon span:nth-child(3) {
+            top: 20px;
+        }
+
+        .navbar-toggle.active .toggle-icon span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 10px;
+        }
+
+        .navbar-toggle.active .toggle-icon span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .navbar-toggle.active .toggle-icon span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 10px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--navbar-bg);
+            backdrop-filter: blur(var(--navbar-blur));
+            z-index: var(--z-mobile-menu);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-slow);
+            overflow-y: auto;
+            padding-top: var(--navbar-height);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding: 1rem;
+            gap: 0.75rem;
+        }
+
+        .mobile-link {
+            width: 100%;
+            color: var(--light);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-normal);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mobile-link:hover,
+        .mobile-link.active {
+            color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-light);
+            box-shadow: 0 0 10px rgba(45, 106, 63, 0.2);
+        }
+
+        /* Container ve Genel İçerik */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+        }
+
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(rgba(28, 34, 48,0.85), rgba(28, 34, 48,0.85)), url('/api/placeholder/1400/700') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, var(--darker), transparent);
+            z-index: 2;
+        }
+
+        header .content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::before {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 6px;
+            background: var(--gradient-1);
+            bottom: -15px;
+            left: 30%;
+            border-radius: 3px;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* partners Kartları */
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: rgba(248, 250, 252, 0.7);
+            font-weight: 300;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .partners-card {
+            background: rgba(255,255,255,0.02);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.05);
+            cursor: pointer;
+        }
+
+        .partners-card:hover {
+            transform: translateY(-15px);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .partners-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(225deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            z-index: -1;
+            border-radius: 24px;
+            background-size: 400%;
+            filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.7s ease;
+        }
+
+        .partners-card:hover::before {
+            opacity: 1;
+            animation: borderGlow 8s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        .partners-logo {
+            padding: 40px;
+            background: rgba(28, 34, 48, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partners-logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45, 106, 63, 0.1), rgba(16, 185, 129, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .partners-card:hover .partners-logo::after {
+            opacity: 1;
+        }
+
+        .partners-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            filter: brightness(0.9) contrast(1.1);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-origin: center;
+            object-fit: contain;
+        }
+
+        .partners-card:hover .partners-logo img {
+            transform: scale(1.15);
+            filter: brightness(1.1) contrast(1.2);
+        }
+
+        .partners-info {
+            padding: 35px 30px;
+            position: relative;
+        }
+
+        .partners-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        .partners-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .partners-info p {
+            color: rgba(248, 250, 252, 0.7);
+            margin-bottom: 25px;
+            line-height: 1.8;
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+
+        .partners-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .partners-link svg {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .partners-link:hover svg {
+            transform: translateX(5px);
+        }
+
+        .partners-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        .partners-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .partners-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient-1);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 10;
+            letter-spacing: 0.5px;
+        }
+
+        /* Get Involved Section */
+        .get-involved {
+            background: linear-gradient(rgba(28, 34, 48, 0.7),) url('/api/placeholder/1400/600') no-repeat center center/cover;
+            padding: 100px 40px;
+            border-radius: 30px;
+            text-align: center;
+            margin-top: 150px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .get-involved::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(45, 106, 63, 0.15), transparent 60%);
+            z-index: -1;
+        }
+
+        .get-involved h3 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .get-involved p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(248, 250, 252, 0.8);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .benefits {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .benefit svg {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #1C2230, #131926);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            padding: 60px 0 30px;
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        .footer-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .footer-link {
+            transition: color 0.3s ease-in-out;
+            color: var(--gray);
+        }
+
+        .footer-link:hover {
+            color: var(--primary-light);
+        }
+
+        .social-icon {
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+            color: var(--gray);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.3);
+            color: var(--primary-light);
+        }
+
+        .glow-border {
+            border-top: 4px solid;
+            border-image: linear-gradient(90deg, #4a90e2, #73b4ff, #4a90e2) 1;
+        }
+
+        /* Animasyonlar */
+        .reveal {
+            position: relative;
+            transform: translateY(80px);
+            opacity: 0;
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        /* Bloblar */
+        .blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .blob-1 {
+            background: var(--primary);
+            top: -200px;
+            right: -200px;
+        }
+
+        .blob-2 {
+            background: var(--secondary);
+            bottom: -200px;
+            left: -200px;
+        }
+
+        /* Responsive Düzenlemeler */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 3rem;
+            }
+            
+            .get-involved h3 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar-menu {
+                display: none;
+            }
+            
+            .navbar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .mobile-menu {
+                display: flex;
+            }
+            
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+            
+            .section-title {
+                margin-bottom: 60px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .get-involved {
+                margin-top: 100px;
+                padding: 80px 30px;
+            }
+            
+            .get-involved h3 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .partners-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .partners-card {
+                max-width: 100%;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .get-involved {
+                margin-top: 80px;
+                padding: 60px 20px;
+            }
+            
+            .get-involved h3 {
+                font-size: 2rem;
+            }
+            
+            .benefits {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .benefit {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-logo {
+                height: 60px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .partners-info h3 {
+                font-size: 1.5rem;
+            }
+            
+            .partners-info p {
+                font-size: 0.95rem;
+            }
+            
+            .get-involved h3 {
+                font-size: 1.8rem;
+            }
+            
+            .get-involved p {
+                font-size: 1.1rem;
+            }
+            
+            .footer {
+                padding: 40px 0 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-logo {
+                height: 50px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .partners-logo {
+                padding: 30px;
+                height: 200px;
+            }
+            
+            .partners-info {
+                padding: 25px 20px;
+            }
+            
+            .partners-info h3 {
+                font-size: 1.3rem;
+            }
+            
+            .mobile-menu {
+                width: 85%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <img src="gorseller/logo/logo.png" alt="PURA DEFENCE Logo" class="navbar-logo">
+            </div>
+            <div class="navbar-menu">
+                <a href="anasayfa.html" class="navbar-link" data-text="Home"><span data-i18n="nav.home">Ana Sayfa</span></a>
+                <a href="hakkimizda.html" class="navbar-link" data-text="About Us"><span data-i18n="nav.about">Hakkımızda</span></a>
+                <a href="urunler.html" class="navbar-link" data-text="Vehicles"><span data-i18n="nav.vehicles">Ürünler</span></a>
+                <a href="ortaklarimiz.html" class="navbar-link active" data-text="partners"><span data-i18n="nav.partners">Partnerler</span></a>
+                <a href="iletisim.html" class="navbar-link" data-text="Contact"><span data-i18n="nav.contact">İletişim</span></a>
+            </div>
+            <div class="navbar-right"><button id="lang-toggle" onclick="toggleLanguage()" style="background:none;border:none;cursor:pointer;padding:4px 6px;display:flex;align-items:center;margin-left:8px;flex-shrink:0;" aria-label="Dil Değiştir / Switch Language">
+  <img id="lang-flag" src="gorseller/genel/tr_bayrak.png" alt="TR" style="width:28px;height:20px;border-radius:3px;object-fit:cover;box-shadow:0 1px 4px rgba(0,0,0,0.45);">
+</button>
+            <button class="navbar-toggle">
+                <div class="toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+        </div>
+        <div class="navbar-bg"></div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-container">
+            <a href="anasayfa.html" class="mobile-link"><span data-i18n="nav.home">Ana Sayfa</span></a>
+            <a href="hakkimizda.html" class="mobile-link"><span data-i18n="nav.about">Hakkımızda</span></a>
+            <a href="umay.html" class="mobile-link"><span data-i18n="nav.umay">UMAY</span></a>
+            <a href="urunler.html" class="mobile-link"><span data-i18n="nav.vehicles">Ürünler</span></a>
+            <a href="ortaklarimiz.html" class="mobile-link active"><span data-i18n="nav.partners">Partnerler</span></a>
+            <a href="iletisim.html" class="mobile-link"><span data-i18n="nav.contact">İletişim</span></a>
+        </div>
+    </div>
+    
+    <div class="particles" id="particles"></div>
+    
+    <section class="container">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        
+        <div class="section-title reveal">
+            <h2 class="mt-52"><span data-i18n="partners.page_title">Partnerlerımız</span></h2>
+            <p>Our valuable business partners who share our vision and contribute to the success of our team.</p>
+        </div>
+        
+        <div class="partners-grid">
+            <!-- partners 1 -->
+            <div class="partners-card reveal stagger-1">
+                <div class="partners-tag">partners</div>
+                <div class="partners-logo">
+                    <img src="gorseller/ortaklar/tesa.jpg" alt="tesa">
+                </div>
+                <div class="partners-info">
+                    <h3>Tesa</h3>
+                    <p>Tesa is one of the world leaders in the field of technical adhesive tapes and self-adhesive system solutions. Since 2001, it has been a 100% subsidiary of Beiersdorf AG (NIVEA, Eucerin).</p>
+                    <a href="https://www.tesa.com/tr-tr" class="partners-link">
+                        Learn More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- partners 2 -->
+            <div class="partners-card reveal stagger-2">
+                <div class="partners-tag">partners</div>
+                <div class="partners-logo">
+                    <img src="gorseller/ortaklar/aerosystems.png" alt="Ulsan Şirketler Grubu">
+                </div>
+                <div class="partners-info">
+                    <h3>Ulsan Holding</h3>
+                    <p>Ulsan Holding is a Türkiye-based company operating in the defense industry, mining, construction, energy and aviation sectors. It conducts mineral exploration and operation activities in the Republic of Congo.</p>
+                    <a href="https://ulsan.com.tr/" class="partners-link">
+                        Learn More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- partners 3 -->
+            <div class="partners-card reveal stagger-3">
+                <div class="partners-tag">partners</div>
+                <div class="partners-logo">
+                    <img src="gorseller/ortaklar/hacettepe_teknokent.png" alt="Hacettepe Teknokent">
+                </div>
+                <div class="partners-info">
+                    <h3>Hacettepe Teknokent</h3>
+                    <p>Hacettepe Teknokent, established in partnership with Hacettepe University, is a technology development zone that provides support to entrepreneurs who produce high-tech products and services based on R&D.</p>
+                    <a href="https://www.hacettepeteknokent.com.tr/" class="partners-link">
+                        Learn More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- partners 4 -->
+            <div class="partners-card reveal stagger-4">
+                <div class="partners-tag">partners</div>
+                <div class="partners-logo">
+                    <img src="gorseller/ortaklar/tubitak.png" alt="TÜBİTAK">
+                </div>
+                <div class="partners-info">
+                    <h3>TÜBİTAK</h3>
+                    <p>The Scientific and Technological Research Council of Türkiye (TÜBİTAK) is the relevant organization of the Ministry of Industry and Technology, aiming to promote, guide and popularize science and technology.</p>
+                    <a href="https://tubitak.gov.tr/tr" class="partners-link">
+                        Learn More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- partners 5 -->
+            <div class="partners-card reveal stagger-5">
+                <div class="partners-tag">partners</div>
+                <div class="partners-logo">
+                    <img src="gorseller/ortaklar/gsb.png" alt="Gençlik ve Spor Bakanlığı">
+                </div>
+                <div class="partners-info">
+                    <h3>The Republic of Turkey Ministry of Youth and Sports</h3>
+                    <p>The Republic of Turkey Ministry of Youth and Sports is the ministry responsible for youth and sports affairs, operating under the Presidency of the Republic of Türkiye.</p>
+                    <a href="https://gsb.gov.tr/tr" class="partners-link">
+                        Learn More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- partners 6 -->
+            <div class="partners-card reveal stagger-6">
+                <div class="partners-tag">partners</div>
+                <div class="partners-logo">
+                    <img src="gorseller/ortaklar/futurehub.png" alt="T3 Vakfı">
+                </div>
+                <div class="partners-info">
+                    <h3>T3 Foundation</h3>
+                    <p>The Turkish Technology Team Foundation (T3 Foundation) was established in 2016 to enable talented young people and people of all age groups to participate in technology development processes.</p>
+                    <a href="https://t3vakfi.org/tr/" class="partners-link">
+                        Learn More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="get-involved reveal" id="contact">
+            <h3><span data-i18n="partners.invest_title">Geleceğe Yatırım Yap</span></h3>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Brand Visibility
+                </div>
+                <div class="benefit">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Technology Network
+                </div>
+                <div class="benefit">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Innovation Partnership
+                </div>
+                <div class="benefit">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Talent Pool
+                </div>
+            </div>
+            
+            <p>Become a partners of our pioneering technology development team and have a say in the technologies of the future. Our premium partnership packages highlight your brand at industry events and national and international competitions, while contributing to the innovation ecosystem.</p>
+            
+            <a href="iletisim.html" class="cta-btn">Contact for partnership File</a>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6">
+                    <img src="gorseller/logo/logo.png" alt="PURA DEFENCE Logo" style="height:56px;width:auto;margin-bottom:12px;display:block;">
+          <h2 class="text-4xl font-bold">PURA DEFENCE</h2>
+                    <p class="mt-4 text-gray-400 leading-relaxed"><span data-i18n="footer.tagline">Gelişmiş insansız hava araçları geliştiriyor ve inovasyonu destekliyoruz.</span></p>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:pl-10">
+                    <h3 class="text-2xl font-semibold" data-i18n="footer.links">Bağlantılar</h3>
+                    <ul class="mt-4 space-y-3">
+                        <li><a href="anasayfa.html" class="footer-link" data-text="Home"><span data-i18n="footer.nav.home">Ana Sayfa</span></a></li>
+                        <li><a href="hakkimizda.html" class="footer-link" data-text="About Us"><span data-i18n="footer.nav.about">Hakkımızda</span></a></li>
+                        <li><a href="urunler.html" class="footer-link" data-text="Vehicles"><span data-i18n="footer.nav.vehicles">Ürünler</span></a></li>
+                        <li><a href="ortaklarimiz.html" class="footer-link" data-text="partners"><span data-i18n="footer.nav.partners">Partnerler</span></a></li>
+                        <li><a href="iletisim.html" class="footer-link" data-text="Contact"><span data-i18n="footer.nav.contact">İletişim</span></a></li>
+                    </ul>
+                </div>
+                </div>
+                <div class="w-full md:w-1/4 mb-6">
+                    <h3 class="text-2xl font-semibold" data-i18n="footer.contact">İletişim</h3>
+                    <p class="mt-4 text-gray-400"><span data-i18n="footer.reach_out">Aşağıdaki e-posta adresi ile bize ulaşabilirsiniz.</span></p>
+                    <p class="mt-2 text-lg font-semibold text-gray-300">purasavunma@gmail.com</p>
+                </div>
+            </div>
+            <div class="text-center mt-10 glow-border pt-6">
+                <p class="text-gray-400"><span data-i18n="footer.copyright">© 2025 PURA DEFENCE | Tüm Hakları Saklıdır.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // AOS Init
+        AOS.init();
+        
+        // Particles animation
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particlesCount = 50;
+            
+            for (let i = 0; i < particlesCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                const size = Math.random() * 5 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const animDuration = Math.random() * 20 + 10;
+                const delay = Math.random() * 10;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                
+                if (Math.random() > 0.5) {
+                    particle.style.background = '#2D6A3F';
+                } else {
+                    particle.style.background = '#10b981';
+                }
+                
+                particle.style.animation = `float ${animDuration}s linear ${delay}s infinite`;
+                particles.appendChild(particle);
+            }
+        }
+
+        // Scroll reveal animation
+        function scrollReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Mobile menu toggle
+        const navbarToggle = document.querySelector('.navbar-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        navbarToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                navbarToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Initialize animations
+        window.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            scrollReveal();
+            
+            // Add floating animation for particles
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = `
+                @keyframes float {
+                    0% { transform: translate(0, 0); }
+                    50% { transform: translate(${Math.random() * 30 - 15}px, ${Math.random() * 30 - 15}px); }
+                    100% { transform: translate(0, 0); }
+                }
+            `;
+            document.head.appendChild(styleSheet);
+        });
+
+        window.addEventListener('scroll', scrollReveal);
+    </script>
+<script src="ceviri.js"></script>
+</body>
+</html>

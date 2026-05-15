@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>html { scrollbar-gutter: stable; }
+</style>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>3D Drone Model & Features | PURA DEFENCE</title>
+  
+
+  <meta name="description" content="Explore the PURA DEFENCE's advanced drone technology. View our interactive 3D model, learn about technical specs, and discover key features.">
+  <meta name="keywords" content="PURA DEFENCE, drone, 3D model, autonomous flight, Jetson Orin, Pixhawk, drone features, UAV technology">
+  <meta name="author" content="PURA DEFENCE">
+
+ 
+  <meta property="og:title" content="PURA DEFENCE | Advanced Drone Technology">
+  <meta property="og:description" content="Interact with our 3D drone model and explore the technical capabilities behind PURA DEFENCE.">
+  
+  <meta property="og:url" content="https://www.purauav.com.tr/"> 
+  <meta property="og:type" content="website">
+
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PURA DEFENCE | Advanced Drone Model">
+  <meta name="twitter:description" content="See our 3D drone model and dive into the features and specs.">
+  <meta name="twitter:image" content="https://www.purauav.com.tr/assets/share-image.jpg">
+    <link rel="icon" href="gorseller/logo/logo.png" type="image/x-icon">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  
+  <!-- Locomotive Scroll for Smooth Scrolling -->
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+  
+  <!-- model-viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+  <!-- AOS Animation -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+    
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'navy': {
+              100: '#e6eaf4',
+              200: '#c1cae0',
+              300: '#97a6cb',
+              400: '#6d83b7',
+              500: '#4460a2',
+              600: '#354c82',
+              700: '#263961',
+              800: '#182541',
+              900: '#091220'
+            }
+          },
+          fontFamily: {
+            'outfit': ['Outfit', 'sans-serif'],
+            'mono': ['Space Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --dark-blue: #091220;
+      --medium-blue: #182541;
+      --light-blue: #263961;
+      --accent-blue: #2D6A3F;
+      --glow-blue: #60a5fa;
+      --primary: #2D6A3F;
+      --primary-light: #2D6A3F;
+      --primary-dark: #1A3D26;
+      --secondary: #5A5F63;
+      --secondary-light: #5A5F63;
+      --accent: #2D6A3F;
+      
+      /* Nötr Renkler */
+      --dark: #1C2230;
+      --darker: #1C2230;
+      --light: #E8E4DB;
+      --gray: #A5AFB8;
+      --gray-light: #e2e8f0;
+      
+      /* Durum Renkleri */
+      --success: #10b981;
+      --warning: #f59e0b;
+      --info: #0ea5e9;
+      --error: #ef4444;
+      
+      /* Gradyanlar */
+      --gradient-primary: linear-gradient(135deg, #2D6A3F, #1A3D26);
+      --gradient-dark: radial-gradient(circle at center, var(--dark), var(--darker));
+      
+      /* Gölgeler */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 15px 30px rgba(45, 106, 63, 0.2);
+      
+      /* Geçişler */
+      --transition-fast: all 0.2s ease;
+      --transition-normal: all 0.3s ease;
+      --transition-slow: all 0.5s ease;
+      
+      /* Bulanıklık */
+      --blur-sm: 5px;
+      --blur-md: 10px;
+      --blur-lg: 20px;
+      
+      /* Navbar */
+      --navbar-height: 80px;
+      --navbar-bg: rgba(28, 34, 48, 0.95);
+      --navbar-blur: var(--blur-md);
+      
+      /* Border Radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1.5rem;
+      --radius-full: 9999px;
+      
+      /* Z-index */
+      --z-navbar: 1000;
+      --z-modal: 1100;
+      --z-mobile-menu: 999;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--navbar-height);
+      z-index: var(--z-navbar);
+      transition: var(--transition-normal);
+    }
+
+    .navbar-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--navbar-bg);
+      backdrop-filter: blur(var(--navbar-blur));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transform: translateY(-100%);
+      transition: var(--transition-normal);
+    }
+
+    .navbar.scrolled .navbar-bg {
+      transform: translateY(0);
+    }
+
+    .navbar-container {
+      max-width: 1400px;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .navbar-brand {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-logo {
+      height: 70px;
+      transition: var(--transition-normal);
+      filter: brightness(1);
+    }
+
+    .navbar-logo:hover {
+      transform: scale(1.05);
+      filter: brightness(1.2) drop-shadow(0 0 10px var(--primary-light));
+    }
+
+    .navbar-brand-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-left: 1rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      transition: var(--transition-normal);
+    }
+
+    .navbar-brand-text:hover {
+      filter: drop-shadow(0 0 5px var(--primary-light));
+    }
+
+    /* Desktop Menu */
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .navbar-link {
+      color: var(--light);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-full);
+      position: relative;
+      transition: var(--transition-normal);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .navbar-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transition: width 0.3s ease, left 0.3s ease;
+      transform: translateY(5px);
+      border-radius: var(--radius-full);
+      opacity: 0;
+    }
+
+    .navbar-link:hover::before,
+    .navbar-link.active::before {
+      width: 80%;
+      left: 10%;
+      opacity: 1;
+      box-shadow: 0 0 10px var(--primary-light)}
+
+    .navbar-link:hover,
+    .navbar-link.active {
+      color: var(--primary-light);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Mobile Toggle Button */
+    .navbar-toggle {
+      display: none;
+      cursor: pointer;
+      z-index: 1001;
+      background: transparent;
+      border: none;
+      width: 45px;
+      height: 45px;
+      position: relative;
+      transition: var(--transition-normal);
+      border-radius: var(--radius-md);
+    }
+
+    .hamburger {
+      width: 30px;
+      height: 20px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--light);
+      border-radius: var(--radius-full);
+      transition: var(--transition-normal);
+    }
+
+    /* X Animation for Hamburger */
+    .navbar-toggle.active .hamburger span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+      background: var(--primary-light);
+    }
+
+    .navbar-toggle.active .hamburger span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .navbar-toggle.active .hamburger span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+      background: var(--primary-light);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--navbar-bg);
+      backdrop-filter: blur(var(--navbar-blur));
+      z-index: var(--z-mobile-menu);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: var(--navbar-height);
+      transform: translateY(-100%);
+      transition: var(--transition-slow);
+      visibility: hidden;
+      opacity: 0;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+      transform: translateY(0);
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .mobile-menu-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 1rem;
+      padding-top: 1rem;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .mobile-link {
+      width: 100%;
+      color: var(--light);
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 0.75rem;
+      text-align: center;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition-normal);
+      transform: translateY(20px);
+      opacity: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .mobile-menu.active .mobile-link {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .mobile-link:hover,
+    .mobile-link.active {
+      color: var(--primary-light);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--primary-light);
+      box-shadow: 0 0 10px rgba(45, 106, 63, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .mobile-menu.active .mobile-link:nth-child(1) { transition-delay: 0.05s; }
+    .mobile-menu.active .mobile-link:nth-child(2) { transition-delay: 0.1s; }
+    .mobile-menu.active .mobile-link:nth-child(3) { transition-delay: 0.15s; }
+    .mobile-menu.active .mobile-link:nth-child(4) { transition-delay: 0.2s; }
+    .mobile-menu.active .mobile-link:nth-child(5) { transition-delay: 0.25s; }
+    .mobile-menu.active .mobile-link:nth-child(6) { transition-delay: 0.3s; }
+    .mobile-menu.active .mobile-link:nth-child(7) { transition-delay: 0.35s; }
+    .mobile-menu.active .mobile-link:nth-child(8) { transition-delay: 0.4s; }
+    .mobile-menu.active .mobile-link:nth-child(9) { transition-delay: 0.45s; }
+    .mobile-menu.active .mobile-link:nth-child(10) { transition-delay: 0.5s; }
+
+    @media (max-width: 992px) {
+      .navbar-container {
+        padding: 0 1.5rem;
+      }
+      .navbar-menu {
+        gap: 1rem;
+      }
+      .navbar-link {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 0 1rem;
+      }
+      .navbar-menu {
+        display: none;
+      }
+      .navbar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .navbar-brand-text {
+        font-size: 1.25rem;
+      }
+      .mobile-link {
+        font-size: 1.1rem;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--dark-blue);
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+    
+    .no-scroll {
+      overflow: hidden;
+    }
+    
+    .section {
+      position: relative;
+      padding: 5rem 0;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, #60a5fa, #2D6A3F, #818cf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .grid-background {
+      background-image: radial-gradient(rgba(96, 165, 250, 0.15) 1px, transparent 1px);
+      background-size: 30px 30px;
+      background-position: 0 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    
+    .glass-panel {
+      background: rgba(24, 37, 65, 0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      border-radius: 1rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    
+    .float-element {
+      animation: float 6s ease-in-out infinite;
+    }
+    .navbar-logo {
+      height: 75px;
+      transition: var(--transition-normal);
+      filter: brightness(1);
+    }
+
+    .navbar-logo:hover {
+      transform: scale(1.05) rotate(-2deg);
+      filter: brightness(1.2) drop-shadow(0 0 10px var(--primary-light));
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .glow {
+      box-shadow: 0 0 15px rgba(96, 165, 250, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+    }
+    
+    .glow-text {
+      text-shadow: 0 0 10px rgba(96, 165, 250, 0.7);
+    }
+    
+    .btn-primary {
+      background: linear-gradient(90deg, #2D6A3F, #818cf8);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #2D6A3F, #4f46e5);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+    
+    .btn-primary:hover::before {
+      width: 100%;
+    }
+    
+    .btn-primary:hover {
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: #60a5fa;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(96, 165, 250, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background: rgba(96, 165, 250, 0.1);
+      border-color: #60a5fa;
+      box-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
+    }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -2;
+      opacity: 0.4;
+    }
+    
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      background: transparent;
+      --poster-color: transparent;
+    }
+    
+    #ar-button {
+      background: linear-gradient(90deg, #2D6A3F, #818cf8);
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+      transition: all 0.3s ease;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #ar-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 30px rgba(96, 165, 250, 0.7);
+    }
+    
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 10;
+    }
+
+    .update-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2D6A3F, #818cf8);
+      transition: width 0.3s ease-in-out;
+    }
+    
+    .sphere {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #60a5fa, #2D6A3F);
+      box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2), 0 0 30px rgba(96, 165, 250, 0.5);
+    }
+    
+    .rotated-frame {
+      transform: perspective(800px) rotateY(-15deg) rotateX(10deg);
+      transition: transform 0.6s ease;
+    }
+    
+    .rotated-frame:hover {
+      transform: perspective(800px) rotateY(-5deg) rotateX(5deg);
+    }
+    
+    .animated-gradient {
+      background: linear-gradient(270deg, #182541, #263961, #0c1e3d);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .tech-spec {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .tech-spec::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+      transition: left 0.7s ease;
+    }
+    
+    .tech-spec:hover::before {
+      left: 100%;
+    }
+    
+    .navlink {
+      position: relative;
+      color: #e2e8f0;
+      transition: all 0.3s ease;
+    }
+    
+    .navlink::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #60a5fa;
+      transition: width 0.3s ease;
+    }
+    
+    .navlink:hover {
+      color: #60a5fa;
+    }
+    
+    .navlink:hover::after {
+      width: 100%;
+    }
+    
+    /* Hide scrollbar for Chrome/Safari/Opera */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: var(--dark-blue);
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: var(--light-blue);
+      border-radius: 5px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-blue);
+    }
+    
+    .clip-path-bg {
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
+    
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    @media (max-width: 768px) {
+      .parallax-bg {
+        background-attachment: scroll;
+      }
+    }
+    
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, #1C2230, #131926);
+      box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .footer::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .footer-container {
+      position: relative;
+      z-index: 1;
+    }
+    .footer-link {
+      transition: color 0.3s ease-in-out;
+    }
+    .footer-link:hover {
+      color: #4a90e2;
+    }
+    .social-icon {
+      transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+    }
+    .social-icon:hover {
+      transform: scale(1.3);
+      color: #4a90e2;
+    }
+    .glow-border {
+      border-top: 4px solid;
+      border-image: linear-gradient(90deg, #4a90e2, #73b4ff, #4a90e2) 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Elements -->
+  <div class="blob bg-blue-500 w-96 h-96 top-1/4 -left-48"></div>
+  <div class="blob bg-indigo-500 w-96 h-96 bottom-1/4 -right-48"></div>
+  <div class="grid-background"></div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="navbar-bg"></div>
+    <div class="navbar-container">
+      <a href="#" class="navbar-brand">
+        <img src="gorseller/logo/logo.png" alt="Logo" class="navbar-logo">
+      </a>
+      
+      <!-- Desktop Menu -->
+      <nav class="navbar-menu">
+        <a href="anasayfa.html" class="navbar-link" data-text="Home">Home</a>
+        <a href="hakkimizda.html" class="navbar-link" data-text="About Us">About Us</a>
+        <a href="urunler.html" class="navbar-link" data-text="Vehicles">Vehicles</a>
+
+        <a href="iletisim.html" class="navbar-link" data-text="Contact">Contact</a>
+      </nav>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="navbar-toggle" id="mobileMenuToggle">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+    </div>
+  </header>
+    
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-container">
+      <a href="anasayfa.html" class="mobile-link">Home</a>
+      <a href="hakkimizda.html" class="mobile-link">About Us</a>
+      <a href="urunler.html" class="mobile-link">Vehicles</a>
+
+      <a href="iletisim.html" class="mobile-link">Contact</a>
+    </div>
+  </div>
+
+  <!-- Model Section -->
+  <section id="model" class="section py-24">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-scroll data-scroll-speed="0.5">
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">3D Drone Model</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mt-4"></div>
+        <p class="mt-6 text-gray-300 max-w-2xl mx-auto">
+          Explore the model, rotate it, zoom in and examine all the details.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Content -->
+        <div class="glass-panel p-8" data-scroll data-scroll-speed="0.3">
+          <h3 class="text-2xl font-bold mb-4">Discover Our Drone</h3>
+          <p class="text-gray-300 mb-6">
+            Don't just read about our drone — experience it. Our interactive 3D model lets you explore every angle in real time, bringing the hardware to life right in your browser.
+          </p>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+              <span>Interactive 3D Drone Model for Realistic Visualization</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+              <span>360° Rotation for Full-Angle Exploration</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+              <span>High-Detail Rendering with Real-Time Performance</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <i class="fas fa-check-circle text-blue-400 mt-1"></i>
+              <span>Explore Directly in Your Browser – No Download Needed</span>
+            </li>
+          </ul>
+          <div class="mt-8">
+            <a href="#features" class="btn-primary">
+              Discover the Features
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- 3D Model -->
+        <div class="relative rounded-xl overflow-hidden glass-panel h-[450px]" data-scroll data-scroll-speed="0.5">
+          <model-viewer src="drone_renkli.glb" 
+                       camera-controls 
+                       auto-rotate 
+                       shadow-intensity="1" 
+                       environment-image="legacy">
+            <div class="progress-bar" slot="progress-bar">
+              <div class="update-bar"></div>
+            </div>
+          </model-viewer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="section py-24 relative">
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16" data-scroll data-scroll-speed="0.5">
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">Features</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="glass-panel p-6 hover:border-blue-400/50 transition-all" data-scroll data-scroll-speed="0.3">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6">
+            <i class="fas fa-camera text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">2K High-Definition Camera</h3>
+          <p class="text-gray-400">60 FPS 2K video recording with excellent image quality and wide dynamic range.</p>
+        </div>
+        
+        <div class="glass-panel p-6 hover:border-blue-400/50 transition-all" data-scroll data-scroll-speed="0.2">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6">
+            <i class="fas fa-battery-full text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Long Battery Life</h3>
+          <p class="text-gray-400">p to 45 minutes of flight time with a single charge using a high-capacity LiPo battery system.</p>
+        </div>
+        
+        <div class="glass-panel p-6 hover:border-blue-400/50 transition-all" data-scroll data-scroll-speed="0.3">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6">
+            <i class="fas fa-wifi text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Advanced Connectivity</h3>
+          <p class="text-gray-400">Reliable image transmission and real-time control with low-latency connection system.</p>
+        </div>
+        
+        <div class="glass-panel p-6 hover:border-blue-400/50 transition-all" data-scroll data-scroll-speed="0.2">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6">
+            <i class="fas fa-brain text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Autonomous Flight</h3>
+          <p class="text-gray-400">Fully autonomous navigation and mission execution powered by onboard systems and advanced flight software.</p>
+        </div>
+        
+        <div class="glass-panel p-6 hover:border-blue-400/50 transition-all" data-scroll data-scroll-speed="0.1">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6">
+            <i class="fas fa-wind text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Payload Capacity</h3>
+          <p class="text-gray-400">Capable of carrying payloads up to 15 kg while maintaining high flight stability and performance.</p>
+        </div>
+        
+        <div class="glass-panel p-6 hover:border-blue-400/50 transition-all" data-scroll data-scroll-speed="0.1">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-6">
+            <i class="fas fa-mobile-alt text-white text-xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Smart Control</h3>
+          <p class="text-gray-400">Uses QGroundControl ground station for mission planning, flight modes, and complex actions. Supports up to 15 kg payload capacity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specs Section -->
+  <section id="specs" class="section py-24 bg-navy-800/50 relative" style="clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16" data-scroll data-scroll-speed="0.5">
+        <span class="text-blue-400 font-mono text-sm uppercase tracking-widest">Details</span>
+        <h2 class="text-4xl md:text-5xl font-bold mt-2">Technical Features</h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto mt-4"></div>
+      </div>
+      
+      <div class="glass-panel p-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-6 border-b border-blue-400/30 pb-2">Hardware</h3>
+            <ul class="space-y-4">
+              <li class="tech-spec flex items-start gap-3 text-sm p-2 hover:bg-blue-500/5 rounded transition-all">
+                <i class="fas fa-microchip text-blue-400 mt-1"></i>
+                <div>
+                  <span class="font-semibold">Companion Computer</span>
+                  <p class="text-gray-400">Jetson Orin NX 16GB</p>
+                </div>
+              </li>
+              <li class="tech-spec flex items-start gap-3 text-sm p-2 hover:bg-blue-500/5 rounded transition-all">
+                <i class="fas fa-memory text-blue-400 mt-1"></i>
+                <div>
+                  <span class="font-semibold">Autopilot</span>
+                  <p class="text-gray-400">Pixhawk Orange Cube</p>
+                </div>
+              </li>
+              <li class="tech-spec flex items-start gap-3 text-sm p-2 hover:bg-blue-500/5 rounded transition-all">
+                <i class="fas fa-weight-hanging text-blue-400 mt-1"></i>
+                <div>
+                  <span class="font-semibold">Weight</span>
+                  <p class="text-gray-400">15 kg</p>
+                </div>
+              </li>
+              <li class="tech-spec flex items-start gap-3 text-sm p-2 hover:bg-blue-500/5 rounded transition-all">
+                <i class="fas fa-tachometer-alt text-blue-400 mt-1"></i>
+                <div>
+                  <span class="font-semibold">Maximum Speed</span>
+                  <p class="text-gray-400">15 km/h</p>
+                </div>
+              </li>
+              <li class="tech-spec flex items-start gap-3 text-sm p-2 hover:bg-blue-500/5 rounded transition-all">
+                <i class="fas fa-broadcast-tower text-blue-400 mt-1"></i>
+                <div>
+                  <span class="font-semibold">Communication</span>
+                  <p class="text-gray-400">Siyi Air Unit</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-bold mb-6 border-b border-blue-400/30 pb-2">Camera</h3>
+            <ul class="space-y-4">
+              <li class="tech-spec flex items-start gap-3 text-sm p-2 hover:bg-blue-500/5 rounded transition-all">
+                <i class="fas fa-film text-blue-400 mt-1"></i>
+                <div>
+                  <span class="font-semibold">Camera</span>
+                  <p class="text-gray-400">Siyi A2 Mini Gimbal Camera</p>
+                </div>
+              </li>
+              <li class="tech-spec flex items-start gap-3 text-sm p-2 hover:bg-blue-500/5 rounded transition-all">
+                <i class="fas fa-video text-blue-400 mt-1"></i>
+                <div>
+                  <span class="font-semibold">Video</span>
+                  <p class="text-gray-400">2k@60fps</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer py-16 px-10 mt-10 text-white relative overflow-hidden" data-aos="fade-up">
+    <div class="container mx-auto flex flex-wrap justify-between footer-container">
+      <div class="w-full md:w-1/4 mb-6">
+        <img src="gorseller/logo/logo.png" alt="PURA DEFENCE Logo" style="height:56px;width:auto;margin-bottom:12px;display:block;">
+          <h2 class="text-4xl font-bold">PURA DEFENCE</h2>
+        <p class="mt-4 text-gray-400 leading-relaxed">We develop advanced unmanned aerial vehicles and support innovation.</p>
+      </div>
+      <div class="w-full md:w-1/4 mb-6 md:pl-10">
+        <h3 class="text-2xl font-semibold">Links</h3>
+        <ul class="mt-4 space-y-3">
+          <li><a href="anasayfa.html" class="text-gray-400 footer-link">Home</a></li>
+          <li><a href="hakkimizda.html" class="text-gray-400 footer-link">About Us</a></li>
+          <li><a href="urunler.html" class="text-gray-400 footer-link">Vehicles</a></li>
+
+          <li><a href="iletisim.html" class="text-gray-400 footer-link">Contact</a></li>
+        </ul>
+      </div>
+      </div>
+      <div class="w-full md:w-1/4 mb-6">
+        <h3 class="text-2xl font-semibold">Contact</h3>
+        <p class="mt-4 text-gray-400">You can reach out to us using the email address below.</p>
+        <p class="mt-2 text-lg font-semibold text-gray-300">purasavunma@gmail.com</p>
+      </div>
+    </div>
+    <div class="text-center mt-10 glow-border pt-6">
+      <p class="text-gray-400">&copy; 2025 PURA DEFENCE | All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
+    
+    mobileMenuToggle.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      
+      // Toggle body scroll when mobile menu is open
+      if (mobileMenu.classList.contains('active')) {
+        body.classList.add('no-scroll');
+      } else {
+        body.classList.remove('no-scroll');
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        body.classList.remove('no-scroll');
+      });
+    });
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+    
+    // Initialize AOS
+    if (window.AOS) {
+      AOS.init({
+        duration: 1000,
+        once: true
+      });
+    }
+    
+    // Model viewer progress bar
+    const modelViewer = document.querySelector('model-viewer');
+    if (modelViewer) {
+      const updateBar = modelViewer.querySelector('.update-bar');
+      
+      modelViewer.addEventListener('progress', (e) => {
+        const percent = e.detail.totalProgress * 100;
+        updateBar.style.width = percent + "%";
+      });
+    }
+    
+    // GSAP animations
+    gsap.from(".footer-container", {
+      opacity: 0,
+      y: 50,
+      duration: 1.5,
+      ease: "power3.out"
+    });
+  </script>
+</body>
+</html>

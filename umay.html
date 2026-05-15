@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<style>html { scrollbar-gutter: stable; }
+</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UMAY | PURA DEFENCE</title>
+  <meta name="description" content="UMAY — sahada görev yapan ekipler için geliştirilmiş gerçek zamanlı durumsal farkındalık ve karar destek sistemi.">
+  <link rel="shortcut icon" href="gorseller/logo/logo.png" type="image/x-icon">
+
+  <!-- Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- AOS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2D6A3F;
+      --primary-light: #2D6A3F;
+      --primary-dark: #1A3D26;
+      --secondary: #5A5F63;
+      --accent: #2D6A3F;
+      --dark: #1C2230;
+      --darker: #1C2230;
+      --light: #E8E4DB;
+      --gray: #A5AFB8;
+      --gradient-primary: linear-gradient(135deg, #2D6A3F, #1A3D26);
+      --navbar-height: 80px;
+      --navbar-bg: rgba(28, 34, 48, 0.95);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--darker);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    
+        /* ── LANGUAGE + HAMBURGER WRAPPER ── */
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 0.75rem;
+        }
+        .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--navbar-height);
+      z-index: 1000;
+    }
+    .navbar-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--navbar-bg);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled .navbar-bg { background: rgba(28, 34, 48,0.98); }
+    .navbar-container {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+    .navbar-brand { display: flex; align-items: center; text-decoration: none; }
+    .navbar-logo { height: 44px; width: auto; }
+    .navbar-menu { display: flex; align-items: center; gap: 0.25rem; }
+    .navbar-link {
+      position: relative;
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.5rem 0.85rem;
+      border-radius: 0.375rem;
+      transition: color 0.3s ease;
+      letter-spacing: 0.02em;
+    }
+    .navbar-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%; right: 50%;
+      height: 2px;
+      background: var(--gradient-primary);
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+    .navbar-link:hover::before, .navbar-link.active::before { left: 10%; right: 10%; }
+    .navbar-link:hover, .navbar-link.active { color: var(--light); }
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 0.375rem;
+      padding: 0.5rem;
+      cursor: pointer;
+    }
+    .hamburger { display: flex; flex-direction: column; gap: 5px; }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--light);
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+    .navbar-toggle.active .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .navbar-toggle.active .hamburger span:nth-child(2) { opacity: 0; }
+    .navbar-toggle.active .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      top: var(--navbar-height); left: 0; right: 0;
+      background: rgba(28, 34, 48,0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 1.5rem 2rem;
+      z-index: 999;
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .mobile-menu.active { display: flex; }
+    .mobile-link {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s ease;
+    }
+    .mobile-link:hover { color: var(--light); }
+
+    @media (max-width: 1024px) {
+      .navbar-menu { display: none; }
+      .navbar-toggle { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(28, 34, 48,0.3) 0%,
+        rgba(28, 34, 48,0.2) 50%,
+        rgba(28, 34, 48,0.85) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 900px;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(45, 106, 63,0.2);
+      border: 1px solid rgba(45, 106, 63,0.5);
+      color: var(--primary-light);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      background: linear-gradient(135deg, #E8E4DB 0%, #A5AFB8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .hero-title span {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--gray);
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gradient-primary);
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.85rem 2rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(45, 106, 63,0.3);
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(45, 106, 63,0.5); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ── UMAY TANITIM VİDEOSU ── */
+    .umay-video-section {
+      width: 100%;
+      background: #000;
+      line-height: 0;
+    }
+    .umay-video-player {
+      width: 100%;
+      max-height: 90vh;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      background: rgba(45, 106, 63,0.15);
+      border: 1px solid rgba(45, 106, 63,0.4);
+      color: var(--primary-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .gradient-text {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-body {
+      color: var(--gray);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 720px;
+    }
+    .divider {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(45, 106, 63,0.4), transparent);
+      margin: 5rem 0;
+    }
+
+    /* ── SOLDIER HERO SECTION ── */
+    .soldier-section {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+    .soldier-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(45, 106, 63,0.12) 0%, rgba(28, 34, 48,0) 70%);
+    }
+    .soldier-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+      width: 100%;
+    }
+    .soldier-image-wrap {
+      flex: 0 0 420px;
+      max-width: 420px;
+    }
+    .soldier-image-wrap img {
+      width: 100%;
+      mix-blend-mode: screen;
+      filter: brightness(1.1) contrast(1.05);
+      display: block;
+    }
+    .soldier-text { flex: 1; }
+    .soldier-headline {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 2rem;
+    }
+    .soldier-headline span { display: block; }
+    .soldier-desc {
+      color: var(--gray);
+      font-size: 1.1rem;
+      line-height: 1.85;
+      border-left: 3px solid var(--primary);
+      padding-left: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .soldier-inner { flex-direction: column; gap: 2rem; }
+      .soldier-image-wrap { flex: unset; max-width: 280px; margin: 0 auto; }
+    }
+
+    /* ── COMPONENT CARD ── */
+    .component-section { padding: 5rem 1.5rem; }
+    .component-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .component-inner.reverse { direction: rtl; }
+    .component-inner.reverse > * { direction: ltr; }
+    .component-image-wrap {
+      position: relative;
+    }
+    .component-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: var(--gradient-primary);
+      border-radius: 1.25rem;
+      opacity: 0.25;
+      filter: blur(20px);
+      z-index: 0;
+    }
+    .component-image-wrap img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      border-radius: 1rem;
+      mix-blend-mode: screen;
+      filter: brightness(1.1) contrast(1.05);
+      display: block;
+    }
+    .component-text {}
+    .component-number {
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 1;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.2;
+      margin-bottom: -1.5rem;
+      display: block;
+    }
+    .component-title {
+      font-size: clamp(1.6rem, 3vw, 2.25rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .component-desc {
+      color: var(--gray);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .spec-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .spec-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+    .spec-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      margin-top: 0.5rem;
+      flex-shrink: 0;
+    }
+    @media (max-width: 900px) {
+      .component-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .component-inner.reverse { direction: ltr; }
+    }
+
+    /* ── SUBSYSTEMS GRID ── */
+    .subsystem-section { padding: 4rem 1.5rem; }
+    .subsystem-inner { max-width: 1200px; margin: 0 auto; }
+    .subsystem-header { text-align: center; margin-bottom: 3.5rem; }
+    .subsystem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.75rem;
+    }
+    .subsystem-card {
+      background: rgba(28, 34, 48,0.7);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .subsystem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .subsystem-card:hover { border-color: rgba(45, 106, 63,0.3); transform: translateY(-4px); }
+    .subsystem-card:hover::before { transform: scaleX(1); }
+    .subsystem-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      mix-blend-mode: screen;
+      filter: brightness(1.15) contrast(1.05);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+    .subsystem-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--light);
+    }
+    .subsystem-card-desc {
+      color: var(--gray);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    /* ── WEARABLES ROW ── */
+    .wearable-section { padding: 4rem 1.5rem; }
+    .wearable-inner { max-width: 1200px; margin: 0 auto; }
+    .wearable-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .wearable-card {
+      background: linear-gradient(135deg, rgba(28, 34, 48,0.9), rgba(28, 34, 48,0.9));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+    .wearable-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(139,92,246,0.15); }
+    .wearable-card-img-wrap {
+      padding: 2rem 2rem 0;
+      display: flex;
+      justify-content: center;
+    }
+    .wearable-card-img-wrap img {
+      height: 200px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      mix-blend-mode: screen;
+      filter: brightness(1.15) contrast(1.05);
+    }
+    .wearable-card-body { padding: 1.5rem 2rem 2rem; }
+    .wearable-card-icon {
+      width: 40px; height: 40px;
+      background: rgba(45, 106, 63,0.15);
+      border: 1px solid rgba(45, 106, 63,0.3);
+      border-radius: 0.6rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: var(--primary-light);
+    }
+    .wearable-card-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.6rem; }
+    .wearable-card-desc { color: var(--gray); font-size: 0.92rem; line-height: 1.7; }
+    @media (max-width: 768px) {
+      .wearable-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── MARKET SECTION ── */
+    .market-section { padding: 5rem 1.5rem; }
+    .market-inner { max-width: 1200px; margin: 0 auto; }
+    .market-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+    .market-image-wrap img {
+      width: 100%;
+      border-radius: 1rem;
+      mix-blend-mode: screen;
+      filter: brightness(1.1) contrast(1.1);
+    }
+    @media (max-width: 900px) {
+      .market-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .comparison-wrap { overflow-x: auto; }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      min-width: 620px;
+    }
+    .comparison-table thead tr {
+      background: rgba(45, 106, 63,0.15);
+      border-bottom: 2px solid rgba(45, 106, 63,0.4);
+    }
+    .comparison-table th {
+      padding: 0.9rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      color: var(--light);
+      letter-spacing: 0.04em;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+    }
+    .comparison-table th:first-child { border-radius: 0.5rem 0 0 0; }
+    .comparison-table th:last-child { border-radius: 0 0.5rem 0 0; }
+    .comparison-table td {
+      padding: 0.8rem 1rem;
+      color: var(--gray);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      vertical-align: middle;
+    }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .comparison-table td:first-child { color: var(--light); font-weight: 600; }
+    /* PURA column highlight */
+    .comparison-table th:nth-child(2),
+    .comparison-table td:nth-child(2) {
+      background: rgba(45, 106, 63,0.08);
+      border-left: 1px solid rgba(45, 106, 63,0.2);
+      border-right: 1px solid rgba(45, 106, 63,0.2);
+      font-weight: 600;
+    }
+    .comparison-table td:nth-child(2) { color: #93c5fd; }
+    .check { color: #34d399; }
+    .cross { color: #f87171; }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: linear-gradient(to bottom, var(--dark), var(--darker));
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 4rem 2.5rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      justify-content: space-between;
+    }
+    .footer-col h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+    .footer-col h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; }
+    .footer-col p, .footer-col a {
+      color: var(--gray); font-size: 0.9rem; line-height: 1.7;
+      text-decoration: none;
+      display: block; margin-bottom: 0.4rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--light); }
+    .footer-social { display: flex; gap: 1rem; margin-top: 0.5rem; }
+    .footer-social a { font-size: 1.4rem; color: var(--gray); transition: color 0.2s; }
+    .footer-social a:hover { color: var(--primary-light); }
+    .footer-bottom {
+      max-width: 1200px; margin: 2.5rem auto 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1.5rem;
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <header class="navbar">
+    <div class="navbar-bg"></div>
+    <div class="navbar-container">
+      <a href="anasayfa.html" class="navbar-brand">
+        <img src="gorseller/logo/logo.png" alt="Logo" class="navbar-logo">
+      </a>
+      <nav class="navbar-menu">
+        <a href="anasayfa.html" class="navbar-link"><span data-i18n="nav.home">Ana Sayfa</span></a>
+        <a href="hakkimizda.html" class="navbar-link"><span data-i18n="nav.about">Hakkımızda</span></a>
+        <a href="umay.html" class="navbar-link active"><span data-i18n="nav.umay">UMAY</span></a>
+        <a href="urunler.html" class="navbar-link"><span data-i18n="nav.vehicles">Ürünler</span></a>
+
+        <a href="iletisim.html" class="navbar-link"><span data-i18n="nav.contact">İletişim</span></a>
+      </nav>
+      <div class="navbar-right"><button id="lang-toggle" onclick="toggleLanguage()" style="background:none;border:none;cursor:pointer;padding:4px 6px;display:flex;align-items:center;margin-left:8px;flex-shrink:0;" aria-label="Dil Değiştir / Switch Language">
+  <img id="lang-flag" src="gorseller/genel/tr_bayrak.png" alt="TR" style="width:28px;height:20px;border-radius:3px;object-fit:cover;box-shadow:0 1px 4px rgba(0,0,0,0.45);">
+</button>
+            <button class="navbar-toggle" aria-label="Menüyü Aç/Kapat">
+        <div class="hamburger">
+          <span></span><span></span><span></span>
+        </div>
+      </button>
+        </div>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="anasayfa.html" class="mobile-link"><span data-i18n="nav.home">Ana Sayfa</span></a>
+    <a href="hakkimizda.html" class="mobile-link"><span data-i18n="nav.about">Hakkımızda</span></a>
+    <a href="umay.html" class="mobile-link"><span data-i18n="nav.umay">UMAY</span></a>
+    <a href="urunler.html" class="mobile-link"><span data-i18n="nav.vehicles">Ürünler</span></a>
+
+    <a href="iletisim.html" class="mobile-link"><span data-i18n="nav.contact">İletişim</span></a>
+  </div>
+
+  <!-- ══ HERO — VIDEO BACKGROUND ══ -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="gorseller/umay/kask_video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+      <div class="hero-tag"><span data-i18n="sg.hero_tag">PURA Savunma Sistemleri</span></div>
+      <h1 class="hero-title">ŞAHİN<span>GÖZ</span></h1>
+      <p class="hero-subtitle"><span data-i18n="sg.hero_subtitle">Gerçek zamanlı durumsal farkındalık ve karar destek sistemi.<br>Edge AI · AR/HUD · Drone Entegrasyonu</span></p>
+      <a href="#overview" class="hero-cta">
+        <i class="fas fa-chevron-down"></i> Keşfet
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <span data-i18n="sg.hero_scroll">Aşağı kaydır</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- ══ UMAY TANITIM VİDEOSU ══ -->
+  <section class="umay-video-section">
+    <video
+      class="umay-video-player"
+      autoplay
+      muted
+      loop
+      playsinline
+      controls>
+      <source src="gorseller/umay/umay_video.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- ══ SOLDIER — GERÇEK KAHRAMANLAR ══ -->
+  <section class="soldier-section" id="overview">
+    <div class="soldier-bg"></div>
+    <div class="soldier-inner">
+      <div class="soldier-image-wrap" data-aos="fade-right" data-aos-duration="900">
+        <img src="gorseller/umay/asker.png" alt="Saha operatörü">
+      </div>
+      <div class="soldier-text" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+        <div class="soldier-headline">
+          <span data-i18n="sg.soldier_h1">GERÇEK KAHRAMANLAR</span>
+          <span class="gradient-text" data-i18n="sg.soldier_h2">İÇİN SAHA DESTEĞİ</span>
+        </div>
+        <p class="soldier-desc"><span data-i18n="sg.soldier_desc">UMAY; sahada görev yapan ekipler için geliştirilen gerçek zamanlı durumsal farkındalık ve karar destek sistemidir. AR/HUD destekli kask, sensörler, kamera sistemleri, taşınabilir yapay zeka işlem birimi ve bağlantılı drone altyapısını tek bir ekosistemde birleştirerek kullanıcının çevresini daha hızlı algılamasını, kritik bilgileri anlık olarak değerlendirmesini ve görev sürecinde daha bilinçli kararlar almasını sağlar.<br><br>Sistem; görüntü, ses, konum ve görev verilerini edge tabanlı yapay zeka ile işler. Böylece internet bağlantısına bağımlı kalmadan sahada hızlı analiz, uyarı üretimi, ekip koordinasyonu ve olay takibi yapılabilir.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ 1. KASK ══ -->
+  <section class="component-section" id="kask">
+    <div class="component-inner">
+      <div class="component-image-wrap" data-aos="fade-right" data-aos-duration="900">
+        <img src="gorseller/umay/kask.png" alt="UMAY Kask">
+      </div>
+      <div class="component-text" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+        <span class="section-tag" data-i18n="sg.comp01_tag">Bileşen 01</span>
+        <span class="component-number">01</span>
+        <h2 class="component-title section-title"><span data-i18n="sg.comp01_title_1">Taktik</span> <span class="gradient-text" data-i18n="sg.comp01_title_2">Kask</span></h2>
+        <p class="component-desc">
+          <span data-i18n="sg.comp01_desc">UMAY\'ün merkezi bileşeni olan taktik kask, çoklu sensör sistemlerini tek bir entegre platform altında birleştirir. AR/HUD görüntüleme, kamera, termal ve gece görüş modülleriyle donatılmış yapısı, kullanıcıya sahadaki her gelişmeyi anlık olarak iletir. Edge AI işlemcisi sayesinde ağ bağlantısı gerektirmeksizin tüm veriler yerelde analiz edilir. Hafif kompozit yapısı, uzun süreli operasyonel kullanıma olanak tanır.</span></p>
+        <ul class="spec-list">
+          <li data-i18n="sg.spec_kask_1">Çoklu sensör entegrasyonu — kamera, termal, NIR</li>
+          <li data-i18n="sg.spec_kask_2">AR/HUD micro-display ile bilgilerin görüş alanına yansıtılması</li>
+          <li data-i18n="sg.spec_kask_3">Edge AI işlemcisiyle bağımsız veri analizi</li>
+          <li data-i18n="sg.spec_kask_4">Piyade sınıfı hafif ve dayanıklı kompozit kabuk</li>
+          <li data-i18n="sg.spec_kask_5">Modüler takma/çıkarma mimarisi</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 1.1 KASK ALT SİSTEMLER ══ -->
+  <section class="subsystem-section">
+    <div class="subsystem-inner">
+      <div class="subsystem-header" data-aos="fade-up">
+        <div class="section-tag" data-i18n="sg.subsys_tag">Kask Alt Sistemleri</div>
+        <h3 class="section-title"><span data-i18n="sg.subsys_title_1">Entegre</span> <span class="gradient-text" data-i18n="sg.subsys_title_2">Sensör Modülleri</span></h3>
+      </div>
+      <div class="subsystem-grid">
+
+        <!-- Kamera -->
+        <div class="subsystem-card" data-aos="fade-up" data-aos-delay="0">
+          <img class="subsystem-card-img" src="gorseller/umay/kamera.png" alt="Kamera Modülü">
+          <div class="subsystem-card-title" data-i18n="sg.cam_title">Kamera Sistemi</div>
+          <p class="subsystem-card-desc">
+            <span data-i18n="sg.cam_desc">Çift lensli yüksek çözünürlüklü kamera dizisi, sürekli 360° çevresel görüntü akışı sağlar. Gerçek zamanlı video verisi onboard AI işlemcisine aktarılarak nesne tespiti, tehdit tanımlama ve sahne analizi otomatik olarak gerçekleştirilir.</span></p>
+        </div>
+
+        <!-- Projeksiyon / HUD -->
+        <div class="subsystem-card" data-aos="fade-up" data-aos-delay="100">
+          <img class="subsystem-card-img" src="gorseller/umay/projeksiyon.png" alt="AR Projeksiyon HUD">
+          <div class="subsystem-card-title" data-i18n="sg.hud_title">AR Projeksiyon / HUD</div>
+          <p class="subsystem-card-desc">
+            <span data-i18n="sg.hud_desc">Yarı saydam mikro-display, operatörün görüş alanına navigasyon verisi, takım konumları, tehdit işaretçileri ve AI uyarılarını gerçek zamanlı olarak yansıtır. Sahadaki durumu kavramak için bakış yönünü değiştirmeye gerek kalmaz.</span></p>
+        </div>
+
+        <!-- Gece Görüşü -->
+        <div class="subsystem-card" data-aos="fade-up" data-aos-delay="200">
+          <img class="subsystem-card-img" src="gorseller/umay/gece_gorusu.png" alt="Gece Görüşü">
+          <div class="subsystem-card-title" data-i18n="sg.nv_title">Gece Görüşü</div>
+          <p class="subsystem-card-desc">
+            <span data-i18n="sg.nv_desc">Aktif NIR (yakın kızılötesi) gece görüş modülü, sıfır ışık koşullarında net monokrom görüntü sağlar. HUD ile entegre çalışarak gece operasyonlarında tam durumsal farkındalık sunar.</span></p>
+        </div>
+
+        <!-- Termal Görüş -->
+        <div class="subsystem-card" data-aos="fade-up" data-aos-delay="300">
+          <img class="subsystem-card-img" src="gorseller/umay/termal_gorus.png" alt="Termal Görüş">
+          <div class="subsystem-card-title" data-i18n="sg.thermal_title">Termal Görüş</div>
+          <p class="subsystem-card-desc">
+            <span data-i18n="sg.thermal_desc">LWIR (uzun dalga kızılötesi) termal sensör, duman, toz ve düşük görüş koşullarında ısı imzalarını tespit eder. Karmaşık arazide gizlenmiş personel veya teçhizatın belirlenmesinde kritik avantaj sağlar.</span></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ GİYİLEBİLİR BİLEŞENLER — Gözlük / Kulaklık / Maske ══ -->
+  <section class="wearable-section">
+    <div class="wearable-inner">
+      <div data-aos="fade-up">
+        <div class="section-tag" data-i18n="sg.wear_tag">Giyilebilir Modüller</div>
+        <h2 class="section-title"><span data-i18n="sg.wear_title_1">Koruma;</span> <span class="gradient-text" data-i18n="sg.wear_title_2">İletişim Katmanı</span></h2>
+        <p class="section-body" style="margin-bottom:0">
+          <span data-i18n="sg.wear_body">Kaskı tamamlayan üç giyilebilir bileşen; operatörü fiziksel tehlikelere karşı korurken ekip koordinasyonunu ve çevresel farkındalığı artırır.</span></p>
+      </div>
+      <div class="wearable-grid">
+
+        <!-- Gözlük -->
+        <div class="wearable-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="wearable-card-img-wrap">
+            <img src="gorseller/umay/gozluk.png" alt="Taktik Gözlük">
+          </div>
+          <div class="wearable-card-body">
+            <div class="wearable-card-icon"><i class="fas fa-eye"></i></div>
+            <div class="wearable-card-title" data-i18n="sg.goggle_title">Taktik Gözlük</div>
+            <p class="wearable-card-desc">
+              <span data-i18n="sg.goggle_desc">Balistik dereceli dayanımlı taktik gözlük, AR projeksiyon optiğini barındırır. Çarpmaya ve çevresel tehlikelere karşı dirençli yapısı, uzun süreli operasyonel kullanımda optik netliği korur. Gözlük, HUD modülüyle entegre çalışarak gerçek zamanlı veri katmanını kullanıcının görüş alanına aktarır.</span></p>
+          </div>
+        </div>
+
+        <!-- Kulaklık -->
+        <div class="wearable-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="wearable-card-img-wrap">
+            <img src="gorseller/umay/kulaklik.png" alt="Taktik Kulaklık">
+          </div>
+          <div class="wearable-card-body">
+            <div class="wearable-card-icon"><i class="fas fa-headphones"></i></div>
+            <div class="wearable-card-title" data-i18n="sg.headset_title">Taktik Kulaklık</div>
+            <p class="wearable-card-desc">
+              <span data-i18n="sg.headset_desc">Aktif gürültü önlemeli taktik kulaklık, kemik iletim teknolojisiyle donatılmıştır. Yüksek gürültülü ortamlarda kristal netliğinde ekip içi iletişim sağlarken AI tarafından üretilen sesli uyarıları da kullanıcıya anlık olarak iletir.</span></p>
+          </div>
+        </div>
+
+        <!-- Maske -->
+        <div class="wearable-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="wearable-card-img-wrap">
+            <img src="gorseller/umay/maske.png" alt="Koruyucu Maske">
+          </div>
+          <div class="wearable-card-body">
+            <div class="wearable-card-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="wearable-card-title" data-i18n="sg.mask_title">Koruyucu Maske</div>
+            <p class="wearable-card-desc">
+              <span data-i18n="sg.mask_desc">CBRN sınıfı koruyucu maske, kirlenmiş ortamlarda solunum güvenliği sağlar. Entegre hava kalitesi sensörleri, tespit edilen tehlike verilerini UMAY kontrol paneline aktararak gerçek zamanlı risk izlemesi yapar.</span></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ 2. KONTROL ÜNİTESİ ══ -->
+  <section class="component-section" id="kontrol">
+    <div class="component-inner reverse">
+      <div class="component-image-wrap" data-aos="fade-left" data-aos-duration="900">
+        <img src="gorseller/umay/kontrol_unitesi.png" alt="Kontrol Ünitesi">
+      </div>
+      <div class="component-text" data-aos="fade-right" data-aos-duration="900" data-aos-delay="100">
+        <span class="section-tag" data-i18n="sg.comp02_tag">Bileşen 02</span>
+        <span class="component-number">02</span>
+        <h2 class="component-title section-title"><span data-i18n="sg.comp02_title_1">Kontrol</span> <span class="gradient-text" data-i18n="sg.comp02_title_2">Ünitesi</span></h2>
+        <p class="component-desc">
+          <span data-i18n="sg.comp02_desc">Sağlam yapılı, taşınabilir edge AI hesaplama ünitesi, operatörün üzerinde taşınacak şekilde tasarlanmıştır. Tüm sensör girdilerini yerel olarak işler — bulut bağımlılığını ortadan kaldırarak kask, drone ve ekip ağı arasındaki veri akışını yönetir. Görev verilerini gerçek zamanlı depolayan ünite, operasyon sonrası analiz için tam bir kayıt sağlar.</span></p>
+        <ul class="spec-list">
+          <li data-i18n="sg.spec_ctrl_1">Sahaya özel sertleştirilmiş edge AI işlemci</li>
+          <li data-i18n="sg.spec_ctrl_2">İnternet bağlantısı olmadan bağımsız analiz</li>
+          <li data-i18n="sg.spec_ctrl_3">Kask, drone ve ekip ağıyla anlık veri senkronizasyonu</li>
+          <li data-i18n="sg.spec_ctrl_4">Gerçek zamanlı uyarı üretimi ve olay kaydı</li>
+          <li data-i18n="sg.spec_ctrl_5">Uzun ömürlü batarya ve hızlı şarj desteği</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ 3. DRONE ══ -->
+  <section class="component-section" id="drone">
+    <div class="component-inner">
+      <div class="component-image-wrap" data-aos="fade-right" data-aos-duration="900">
+        <img src="gorseller/umay/drone.png" alt="UMAY Drone">
+      </div>
+      <div class="component-text" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
+        <span class="section-tag" data-i18n="sg.comp03_tag">Bileşen 03</span>
+        <span class="component-number">03</span>
+        <h2 class="component-title section-title"><span data-i18n="sg.comp03_title_1">Anti-Jammer</span> <span class="gradient-text" data-i18n="sg.comp03_title_2">Drone</span></h2>
+        <p class="component-desc">
+          <span data-i18n="sg.comp03_desc">Piyade kullanımı için tasarlanan UMAY dronu, fiber-optik bağlantısıyla sıfır RF imzasına ulaşır — elektronik harp (EH) tehditlerine karşı tam bağışıklık sağlar. Özel sırt çantası modülüne sığan kompakt yapısıyla 90 saniyenin altında konuşlandırılabilir ve gerçek zamanlı hava görüntüleri doğrudan operatörün HUD\'una aktarır.</span></p>
+        <ul class="spec-list">
+          <li data-i18n="sg.spec_drone_1">Fiber-optik kontrol — sıfır RF imzası, EH bağışıklığı</li>
+          <li data-i18n="sg.spec_drone_2">Standart asker sırt çantasına entegre taşıma modülü</li>
+          <li data-i18n="sg.spec_drone_3">90 saniye altı konuşlandırma süresi</li>
+          <li data-i18n="sg.spec_drone_4">HUD'a gerçek zamanlı hava gözetleme akışı</li>
+          <li data-i18n="sg.spec_drone_5">Düşük akustik imza, gece operasyonlarına uygun</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ══ 4. PAZAR ANALİZİ + KARŞILAŞTIRMA ══ -->
+  <section class="market-section" id="pazar">
+    <div class="market-inner">
+      <div data-aos="fade-up">
+        <div class="section-tag" data-i18n="sg.market_tag">Pazar Konumlanması</div>
+        <h2 class="section-title"><span data-i18n="sg.market_title_1">Küresel Arenada</span> <span class="gradient-text" data-i18n="sg.market_title_2">UMAY</span></h2>
+        <p class="section-body">
+          <span data-i18n="sg.market_body">Taktik giyilebilir ve saha durumsal farkındalık pazarında UMAY, rakip sistemlerin karşılayamadığı kritik gereksinimleri — EH bağışıklığı, yerli üretim ve tam entegre ekosistem — tek bir çözümde birleştirir.</span></p>
+      </div>
+      <div class="market-grid" style="margin-top:3rem">
+        <div data-aos="fade-right">
+          <img src="gorseller/umay/pazar_analizi.png" alt="Pazar Analizi" style="width:100%;border-radius:1rem;mix-blend-mode:screen;filter:brightness(1.1) contrast(1.1)">
+        </div>
+        <div data-aos="fade-left" data-aos-delay="100">
+          <h3 class="section-title" style="font-size:1.5rem;margin-bottom:1.5rem"><span data-i18n="sg.compare_title_1">Rakip</span> <span class="gradient-text" data-i18n="sg.compare_title_2">Karşılaştırması</span></h3>
+          <div class="comparison-wrap">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th data-i18n="sg.col_feature">Özellik</th>
+                  <th>PURA DEFENCE</th>
+                  <th>Anduril EagleEye</th>
+                  <th>Microsoft IVAS</th>
+                  <th>Ukrayna FO İHA</th>
+                  <th>Rivet</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-i18n="sg.feat_eh">EH Bağışıklığı</td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_fiber">Fiber-Optik</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_rf_based">RF Tabanlı</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_rf_based">RF Tabanlı</span></td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_fiber">Fiber-Optik</span></td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_hybrid">Hibrit</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="sg.feat_c2">KMGS Entegrasyonu</td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_full">Tam</span></td>
+                  <td><span class="check">✓</span> Var</td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_limited">Sınırlı</span></td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_limited">Sınırlı</span></td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_planned">Planlı</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="sg.feat_rf">RF İmzası</td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_zero">Sıfır</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_high">Yüksek</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_medium">Orta</span></td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_low">Düşük</span></td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_low">Düşük</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="sg.feat_infantry">Piyade Sınıfı</td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_optimized">Optimize</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_special">Özel Kuv.</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_limited">Sınırlı</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_limited">Sınırlı</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_limited">Sınırlı</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="sg.feat_ecosystem">Entegre Ekosistem</td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_one_sys">Tek Sistem</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_separate">Ayrı</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_separate">Ayrı</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_separate">Ayrı</span></td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_partial">Kısmi</span></td>
+                </tr>
+                <tr>
+                  <td data-i18n="sg.feat_domestic">Yerlilik / ITAR Muaf</td>
+                  <td><span class="check">✓</span> <span data-i18n="sg.val_domestic100">%100 Yerli</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_itar">ABD/ITAR</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_itar">ABD/ITAR</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_itar">ABD/ITAR</span></td>
+                  <td><span class="cross">✕</span> <span data-i18n="sg.val_itar">ABD/ITAR</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer" data-aos="fade-up">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <img src="gorseller/logo/logo.png" alt="PURA DEFENCE Logo" style="height:56px;width:auto;margin-bottom:12px;display:block;">
+        <h2>PURA DEFENCE</h2>
+        <p><span data-i18n="footer.tagline">Gelişmiş insansız hava araçları geliştiriyor ve inovasyonu destekliyoruz.</span></p>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.links">Bağlantılar</h3>
+        <a href="anasayfa.html" data-i18n="footer.nav.home">Ana Sayfa</a>
+        <a href="hakkimizda.html" data-i18n="footer.nav.about">Hakkımızda</a>
+        <a href="umay.html">UMAY</a>
+        <a href="urunler.html" data-i18n="footer.nav.vehicles">Ürünler</a>
+
+        <a href="iletisim.html" data-i18n="footer.nav.contact">İletişim</a>
+      </div>
+      </div>
+      <div class="footer-col">
+        <h3 data-i18n="footer.contact">İletişim</h3>
+        <p><span data-i18n="footer.reach_out">Aşağıdaki e-posta adresi ile bize ulaşabilirsiniz.</span></p>
+        <p style="color:#fff;font-weight:600;margin-top:.5rem">purasavunma@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><span data-i18n="footer.copyright">© 2025 PURA DEFENCE | Tüm Hakları Saklıdır.</span></p>
+    </div>
+  </footer>
+
+  <!-- AOS init + navbar logic -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true, offset: 80 });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Mobile menu toggle
+    const toggleBtn = document.querySelector('.navbar-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggleBtn.addEventListener('click', function() {
+      this.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        toggleBtn.classList.remove('active');
+      });
+    });
+  </script>
+<script src="ceviri.js"></script>
+</body>
+</html>
+     

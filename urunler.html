@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<style>html { scrollbar-gutter: stable; }
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="gorseller/logo/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="gorseller/logo/logo.png" type="image/x-icon">
+    <title>Ürünler | PURA Defence</title>
+    <meta name="description" content="Discover the UAVs developed by PURA Defence, including VTOL and fixed-wing systems engineered for national and international competitions like TEKNOFEST and.">
+    <meta name="keywords" content="PURA Defence, UAV Vehicles, Argus, PURA 6719, PURA 638, Teknofest,  VTOL, Fixed-Wing UAV, Hacettepe University, Turkish UAV team">
+    <meta name="author" content="PURA Defence">
+  
+    <meta property="og:title" content="Ürünler | PURA Defence">
+    <meta property="og:description" content="Explore the cutting-edge UAV fleet developed by the PURA Defence team, from short-range recon drones to VTOL systems for global competitions.">
+    <meta property="og:url" content="https://purauav.com.tr/vehicles.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ürünler | PURA Defence">
+    <meta name="twitter:description" content="Get to know our UAVs built for innovation, performance, and international success.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="navbar_css.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.6.0/tsparticles.bundle.min.js"></script>
+
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    
+    <!-- Locomotive Scroll for Smooth Scrolling -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+    
+    <!-- model-viewer -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    
+    <style>
+      :root {
+        --gradient-1: linear-gradient(135deg, #163985, #8f527d);
+        --gradient-2: linear-gradient(135deg, #607dac, #069d8b);
+         --gradient-3: linear-gradient(135deg, #0e1d4b, #6e6904)
+      }
+      body {
+        background-color: #0e1014;
+        color: #e4e4e7;
+        font-family: 'Inter', sans-serif;
+      }
+      .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #38bdf8;
+        margin-top: 8px;
+      }
+      .vehicle-img {
+        transition: transform 0.3s ease;
+      }
+      .vehicle-img:hover {
+        transform: scale(1.03);
+      }
+      .highlight {
+        color: #38bdf8;
+      }
+      .cta-btn {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(45, 106, 63, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1.1rem;
+            width: 200px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gradient-3);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .cta-btn:hover::before {
+            width: 100%;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(45, 106, 63, 0.4);
+        }
+        
+        :root {
+            /* Ana Renkler */
+            --primary: #2D6A3F;
+            --primary-light: #2D6A3F;
+            --primary-dark: #1A3D26;
+            --secondary: #5A5F63;
+            --secondary-light: #5A5F63;
+            --accent: #2D6A3F;
+            
+            /* Nötr Renkler */
+            --dark: #1C2230;
+            --darker: #1C2230;
+            --light: #E8E4DB;
+            --gray: #A5AFB8;
+            --gray-light: #e2e8f0;
+            
+            /* Durum Renkleri */
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #0ea5e9;
+            --error: #ef4444;
+            
+            /* Gradyanlar */
+            --gradient-primary: linear-gradient(135deg, #2D6A3F, #1A3D26);
+            --gradient-dark: radial-gradient(circle at center, var(--dark), var(--darker));
+            
+            /* Gölgeler */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 30px rgba(45, 106, 63, 0.2);
+            
+            /* Geçişler */
+            --transition-fast: all 0.2s ease;
+            --transition-normal: all 0.3s ease;
+            --transition-slow: all 0.5s ease;
+            
+            /* Bulanıklık */
+            --blur-sm: 5px;
+            --blur-md: 10px;
+            --blur-lg: 20px;
+            
+            /* Navbar */
+            --navbar-height: 80px;
+            --navbar-bg: rgba(28, 34, 48, 0.95);
+            --navbar-blur: var(--blur-md);
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Z-index */
+            --z-navbar: 1000;
+            --z-modal: 1100;
+            --z-mobile-menu: 999;
+        }
+
+        /* Reset & Base Styles */
+    
+    
+        /* Navbar */
+        
+        /* ── LANGUAGE + HAMBURGER WRAPPER ── */
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 0.75rem;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--navbar-height);
+            z-index: var(--z-navbar);
+            transition: var(--transition-normal);
+        }
+
+        .navbar-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--navbar-bg);
+            backdrop-filter: blur(var(--navbar-blur));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transform: translateY(-100%);
+            transition: var(--transition-normal);
+        }
+
+        .navbar.scrolled .navbar-bg {
+            transform: translateY(0);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .navbar-brand {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            height: 70px;
+            transition: var(--transition-normal);
+            filter: brightness(1);
+        }
+
+        .navbar-logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2) drop-shadow(0 0 10px var(--primary-light));
+        }
+
+        .navbar-brand-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-left: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: var(--transition-normal);
+        }
+
+        .navbar-brand-text:hover {
+            filter: drop-shadow(0 0 5px var(--primary-light));
+        }
+
+        /* Desktop Menu */
+        .navbar-menu {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .navbar-link {
+            color: var(--light);
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-full);
+            position: relative;
+            transition: var(--transition-normal);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease, left 0.3s ease;
+            transform: translateY(5px);
+            border-radius: var(--radius-full);
+            opacity: 0;
+        }
+
+        .navbar-link:hover::before,
+        .navbar-link.active::before {
+            width: 80%;
+            left: 10%;
+            opacity: 1;
+            box-shadow: 0 0 10px var(--primary-light);
+        }
+
+        .navbar-link:hover,
+        .navbar-link.active {
+            color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Mobile Toggle Button */
+        .navbar-toggle {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+            background: transparent;
+            border: none;
+            width: 45px;
+            height: 45px;
+            position: relative;
+            transition: var(--transition-normal);
+            border-radius: var(--radius-md);
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--light);
+            border-radius: var(--radius-full);
+            transition: var(--transition-normal);
+        }
+
+        /* X Animation for Hamburger */
+        .navbar-toggle.active .hamburger span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background: var(--primary-light);
+        }
+
+        .navbar-toggle.active .hamburger span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .navbar-toggle.active .hamburger span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background: var(--primary-light);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--navbar-bg);
+            backdrop-filter: blur(var(--navbar-blur));
+            z-index: var(--z-mobile-menu);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: var(--navbar-height);
+            transform: translateY(-100%);
+            transition: var(--transition-slow);
+            visibility: hidden;
+            opacity: 0;
+            overflow-y: auto; /* Kaydırılabilir */
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .mobile-menu-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            padding: 1rem;
+            padding-top: 1rem; /* Yukarıdan boşluğu azalttık */
+            gap: 0.75rem; /* Menü öğeleri arasındaki boşluğu azalttık */
+            margin-bottom: 2rem; /* Alt tarafta biraz boşluk bırakalım */
+        }
+
+        .mobile-link {
+            width: 100%;
+            color: var(--light);
+            font-size: 1.1rem; /* Font boyutunu küçülttük */
+            font-weight: 600;
+            padding: 0.75rem; /* Padding'i azalttık */
+            text-align: center;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition-normal);
+            transform: translateY(20px);
+            opacity: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px; /* Letter-spacing'i azalttık */
+        }
+
+        .mobile-menu.active .mobile-link {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-link:hover,
+        .mobile-link.active {
+            color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-light);
+            box-shadow: 0 0 10px rgba(45, 106, 63, 0.2);
+            transform: translateY(-2px); /* Daha küçük bir hareket efekti */
+        }
+
+        /* Mobile Menu Animation - Daha hızlı animasyon için gecikmeleri azalttım */
+        .mobile-menu.active .mobile-link:nth-child(1) { transition-delay: 0.05s; }
+        .mobile-menu.active .mobile-link:nth-child(2) { transition-delay: 0.1s; }
+        .mobile-menu.active .mobile-link:nth-child(3) { transition-delay: 0.15s; }
+        .mobile-menu.active .mobile-link:nth-child(4) { transition-delay: 0.2s; }
+        .mobile-menu.active .mobile-link:nth-child(5) { transition-delay: 0.25s; }
+        .mobile-menu.active .mobile-link:nth-child(6) { transition-delay: 0.3s; }
+        .mobile-menu.active .mobile-link:nth-child(7) { transition-delay: 0.35s; }
+        .mobile-menu.active .mobile-link:nth-child(8) { transition-delay: 0.4s; }
+        .mobile-menu.active .mobile-link:nth-child(9) { transition-delay: 0.45s; }
+        .mobile-menu.active .mobile-link:nth-child(10) { transition-delay: 0.5s; }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar-container {
+                padding: 0 1.5rem;
+            }
+
+            .navbar-menu {
+                gap: 1rem;
+            }
+
+            .navbar-link {
+                font-size: 0.9rem;
+                padding: 0.6rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: 0 1rem;
+            }
+
+            .navbar-menu {
+                display: none;
+            }
+
+            .navbar-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-brand-text {
+                font-size: 1.25rem;
+            }
+
+            .mobile-link {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Demo Page Styling */
+     
+
+
+        
+    </style>
+  </head>
+  <body>
+  <!-- Custom Cursor -->
+  <div class="cursor" style="position:fixed;top:0;left:0;width:16px;height:16px;border:2px solid #38bdf8;border-radius:50%;pointer-events:none;z-index:10000;mix-blend-mode:difference;transition:transform 0.1s;"></div>
+  <div class="cursor-follower" style="position:fixed;top:0;left:0;width:32px;height:32px;border:2px solid #38bdf8;border-radius:50%;pointer-events:none;z-index:9999;opacity:0.3;mix-blend-mode:difference;transition:transform 0.2s;"></div>
+    <!-- Navbar -->
+          <header class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">
+                <img src="gorseller/logo/logo.png" alt="Logo" class="navbar-logo">
+                
+            </a>
+            
+            <!-- Desktop Menu -->
+     <nav class="navbar-menu">
+        <a href="anasayfa.html" class="navbar-link" data-text="Home"><span data-i18n="nav.home">Ana Sayfa</span></a>
+        <a href="hakkimizda.html" class="navbar-link" data-text="About Us"><span data-i18n="nav.about">Hakkımızda</span></a>
+        <a href="urunler.html" class="navbar-link" data-text="Vehicles"><span data-i18n="nav.vehicles">Ürünler</span></a>
+
+        <a href="iletisim.html" class="navbar-link" data-text="Contact"><span data-i18n="nav.contact">İletişim</span></a>
+     </nav>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="navbar-right"><button id="lang-toggle" onclick="toggleLanguage()" style="background:none;border:none;cursor:pointer;padding:4px 6px;display:flex;align-items:center;margin-left:8px;flex-shrink:0;" aria-label="Dil Değiştir / Switch Language">
+  <img id="lang-flag" src="gorseller/genel/tr_bayrak.png" alt="TR" style="width:28px;height:20px;border-radius:3px;object-fit:cover;box-shadow:0 1px 4px rgba(0,0,0,0.45);">
+</button>
+            <button class="navbar-toggle">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-container">
+             <a href="anasayfa.html" class="mobile-link "><span data-i18n="nav.home">Ana Sayfa</span></a>
+      <a href="hakkimizda.html" class="mobile-link"><span data-i18n="nav.about">Hakkımızda</span></a>
+      <a href="umay.html" class="mobile-link"><span data-i18n="nav.umay">UMAY</span></a>
+            <a href="urunler.html" class="mobile-link"><span data-i18n="nav.vehicles">Ürünler</span></a>
+
+      <a href="iletisim.html" class="mobile-link"><span data-i18n="nav.contact">İletişim</span></a>
+        </div>
+    </div>
+
+    </div>
+    <!-- Hero -->
+    <section class="w-full min-h-[80vh] flex items-center justify-center text-center px-6 bg-cover bg-center relative" style="background-image: url('https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?auto=format&fit=crop&w=1470&q=80');">
+      <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+      <div class="relative z-10 max-w-4xl text-white" data-aos="fade-up">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+          <span class="highlight" data-i18n="vehicles.hero_title">Ürünlerimiz</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto">
+          <span data-i18n="vehicles.hero_text">Geniş bir operasyonel ihtiyacı karşılamak üzere özel ekibimiz tarafından geliştirilen hassas mühendislik İHA'larını keşfedin.</span></p>
+      </div>
+
+    </section>
+    <script>
+document.querySelector('.navbar-toggle').onclick = function() {
+  document.querySelector('.mobile-menu').classList.toggle('active');
+};
+</script>
+    <!-- Vehicle Section -->
+    <section class="py-20 px-6 md:px-16 space-y-28">
+      <!-- Vehicle Cards -->
+      <!-- Vehicle 1 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+        <div>
+          <h2 class="text-4xl font-bold mb-4 section-title">Argus</h2>
+          <p class="text-slate-400 mb-6 leading-relaxed">
+            A lightweight and modular system designed for rapid deployment in short-range reconnaissance missions. Its compact design ensures high agility and portability.
+          </p>
+          <ul class="list-disc list-inside text-slate-300 space-y-2 text-sm md:text-base">
+            <li><span data-i18n="vehicles.argus_s1_label">Uçuş süresi:</span> <span class="highlight" data-i18n="vehicles.argus_s1_val">30 dakika</span></li>
+            <li><span data-i18n="vehicles.argus_s2_label">Kamera:</span> <span class="highlight" data-i18n="vehicles.argus_s2_val">Sabitleyicili 4K HD</span></li>
+            <li><span data-i18n="vehicles.argus_s3_label">Kontrol Menzili:</span> <span class="highlight" data-i18n="vehicles.argus_s3_val">5 km</span></li>
+            <li><span data-i18n="vehicles.argus_s4_label">Manevra Kabiliyeti:</span> <span class="highlight" data-i18n="vehicles.argus_s4_val">Yüksek hızlı adaptif motorlar</span></li>
+          </ul>
+        </div>
+        <img src="gorseller/araclar/kesif_uav.jpeg" alt="Scout UAV" class="rounded-2xl shadow-xl vehicle-img" />
+        <a href="3d-model-goruntuleyici.html" class="cta-btn"><span data-i18n="vehicles.3d_model">3B Model</span></a>
+      </div>
+          
+      <!-- Vehicle 2 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center md:flex-row-reverse" data-aos="fade-up" data-aos-delay="100">
+        <img src="gorseller/araclar/nobetci_uav.jpeg" alt="Sentinel UAV" class="rounded-2xl shadow-xl vehicle-img order-last md:order-first" />
+        <div>
+          <h2 class="text-4xl font-bold mb-4 section-title"> PURA 6719 </h2>
+          <p class="text-slate-400 mb-6 leading-relaxed">
+            In 2024, we achieved 8th place worldwide at the (Student Unmanned Aerial Systems) competition with our VTOL (Vertical Take-Off and Landing) unmanned aerial vehicle named "PURA 6719."
+          </p>
+          <ul class="list-disc list-inside text-slate-300 space-y-2 text-sm md:text-base">
+            <li><span data-i18n="vehicles.u6719_s1_label">Navigasyon:</span> <span class="highlight" data-i18n="vehicles.u6719_s1_val">GPS + IMU entegrasyonu</span></li>
+            <li><span data-i18n="vehicles.u6719_s2_label">Uçuş modu:</span> <span class="highlight" data-i18n="vehicles.u6719_s2_val">Özerk + Manuel geçersiz kılma</span></li>
+            <li><span data-i18n="vehicles.u6719_s3_label">Menzil:</span> <span class="highlight" data-i18n="vehicles.u6719_s3_val">Eve dönüş özelliğiyle 10 km</span></li>
+            <li><span data-i18n="vehicles.u6719_s4_label">Stabilite:</span> <span class="highlight" data-i18n="vehicles.u6719_s4_val">Yüksek rüzgar direnci</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Vehicle 3 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center" data-aos="fade-up" data-aos-delay="200">
+        <div>
+          <h2 class="text-4xl font-bold mb-4 section-title">PURA 638</h2>
+          <p class="text-slate-400 mb-6 leading-relaxed">
+            In 2023, we participated in the TEKNOFEST International Unmanned Aerial Vehicle Competition with our fixed-wing UAV named "PURA 638" and were awarded the Performance Award thanks to our successful performance
+          </p>
+          <ul class="list-disc list-inside text-slate-300 space-y-2 text-sm md:text-base">
+            <li><span data-i18n="vehicles.u638_s1_label">Maksimum Hız:</span> <span class="highlight" data-i18n="vehicles.u638_s1_val">120 km/s</span></li>
+            <li><span data-i18n="vehicles.u638_s2_label">Veri Bağlantısı:</span> <span class="highlight" data-i18n="vehicles.u638_s2_val">Şifreli gerçek zamanlı video</span></li>
+            <li><span data-i18n="vehicles.u638_s3_label">Batarya:</span> <span class="highlight" data-i18n="vehicles.u638_s3_val">Akıllı güç yönetimi</span></li>
+            <li><span data-i18n="vehicles.u638_s4_label">Yapı:</span> <span class="highlight" data-i18n="vehicles.u638_s4_val">Karbon fiber gövde</span></li>
+          </ul>
+        </div>
+        <img src="gorseller/araclar/falcon_uav.png" alt="Falcon UAV" class="rounded-2xl shadow-xl vehicle-img" />
+      </div>
+
+      <!-- Vehicle 4 -->
+      <div class="grid md:grid-cols-2 gap-12 items-center md:flex-row-reverse" data-aos="fade-up" data-aos-delay="300">
+        <img src="gorseller/araclar/eclipse_uav.png" alt="Eclipse UAV" class="rounded-2xl shadow-xl vehicle-img order-last md:order-first" />
+        <div>
+          <h2 class="text-4xl font-bold mb-4 section-title">PURA 1679</h2>
+          <p class="text-slate-400 mb-6 leading-relaxed">
+            Designed for endurance and efficiency, Eclipse excels in long-range missions. It features solar-assisted flight and advanced telemetry for extended autonomy.
+          </p>
+          <ul class="list-disc list-inside text-slate-300 space-y-2 text-sm md:text-base">
+            <li><span data-i18n="vehicles.u1679_s1_label">Uçuş Süresi:</span> <span class="highlight" data-i18n="vehicles.u1679_s1_val">2+ saat</span></li>
+            <li><span data-i18n="vehicles.u1679_s2_label">Enerji:</span> <span class="highlight" data-i18n="vehicles.u1679_s2_val">Güneş paneli destekli</span></li>
+            <li><span data-i18n="vehicles.u1679_s3_label">Telemetri:</span> <span class="highlight" data-i18n="vehicles.u1679_s3_val">Gelişmiş çok kanallı sistem</span></li>
+            <li><span data-i18n="vehicles.u1679_s4_label">Yük Kapasitesi:</span> <span class="highlight" data-i18n="vehicles.u1679_s4_val">2,5 kg'a kadar</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-[#101114] py-20 px-6 md:px-16 text-center" data-aos="fade-up">
+      <h3 class="text-3xl md:text-4xl font-semibold text-white mb-6"><span data-i18n="vehicles.cta_title">Teknolojimizle ilgileniyor musunuz?</span></h3>
+      <p class="text-slate-400 max-w-xl mx-auto mb-8">
+        <span data-i18n="vehicles.cta_text">Geliştirme süreçlerimiz hakkında daha fazla bilgi almak veya teknik doküman ve performans demosu talep etmek için PURA DEFENCE ile iletişime geçin.</span></p>
+      <a href="iletisim.html" class="inline-block px-8 py-3 bg-green-700 hover:bg-green-800 text-white text-lg font-medium rounded-full transition"><span data-i18n="vehicles.cta_btn">İletişime Geç</span></a>
+    </section>
+
+    <!-- Footer -->
+   
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+     
+
+
+
+        .footer {
+            background: linear-gradient(135deg, #1C2230, #131926);
+            box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .footer::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .footer-container {
+            position: relative;
+            z-index: 1;
+        }
+        .footer-link {
+            transition: color 0.3s ease-in-out;
+        }
+        .footer-link:hover {
+            color: #4a90e2;
+        }
+        .social-icon {
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        .social-icon:hover {
+            transform: scale(1.3);
+            color: #4a90e2;
+        }
+        .glow-border {
+            border-top: 4px solid;
+            border-image: linear-gradient(90deg, #4a90e2, #73b4ff, #4a90e2) 1;
+        }
+    </style>
+
+
+<footer class="footer py-16 px-10 mt-10 text-white relative overflow-hidden" data-aos="fade-up">
+  <div class="container mx-auto flex flex-wrap justify-between footer-container">
+      <div class="w-full md:w-1/4 mb-6">
+          <img src="gorseller/logo/logo.png" alt="PURA DEFENCE Logo" style="height:56px;width:auto;margin-bottom:12px;display:block;">
+          <h2 class="text-4xl font-bold">PURA DEFENCE</h2>
+          <p class="mt-4 text-gray-400 leading-relaxed"><span data-i18n="footer.tagline">Gelişmiş insansız hava araçları geliştiriyor ve inovasyonu destekliyoruz.</span></p>
+      </div>
+      <div class="w-full md:w-1/4 mb-6 md:pl-10">
+          <h3 class="text-2xl font-semibold" data-i18n="footer.links">Bağlantılar</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="anasayfa.html" class="text-gray-400 footer-link" data-text="Home"><span data-i18n="footer.nav.home">Ana Sayfa</span></a></li>
+            <li><a href="hakkimizda.html" class="text-gray-400 footer-link" data-text="About Us"><span data-i18n="footer.nav.about">Hakkımızda</span></a></li>
+            <li><a href="urunler.html" class="text-gray-400 footer-link" data-text="Vehicles"><span data-i18n="footer.nav.vehicles">Ürünler</span></a></li>
+
+            <li><a href="iletisim.html" class="text-gray-400 footer-link" data-text="Contact"><span data-i18n="footer.nav.contact">İletişim</span></a></li>
+          </ul>
+      </div>
+      </div>
+      <div class="w-full md:w-1/4 mb-6">
+          <h3 class="text-2xl font-semibold" data-i18n="footer.contact">İletişim</h3>
+          <p class="mt-4 text-gray-400"><span data-i18n="footer.reach_out"><span data-i18n="footer.reach_out">Aşağıdaki e-posta adresi ile bize ulaşabilirsiniz.</span></span></p>
+          <p class="mt-2 text-lg font-semibold text-gray-300">purasavunma@gmail.com</p>
+      </div>
+  </div>
+  <div class="text-center mt-10 glow-border pt-6">
+      <p class="text-gray-400"><span data-i18n="footer.copyright"><span data-i18n="footer.copyright">© 2025 PURA DEFENCE | Tüm Hakları Saklıdır.</span></span></p>
+  </div>
+</footer>
+    <script>
+        AOS.init();
+        
+    </script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const cursor = document.querySelector('.cursor');
+  const cursorFollower = document.querySelector('.cursor-follower');
+  if (cursor && cursorFollower) {
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      setTimeout(() => {
+        cursorFollower.style.left = e.clientX + 'px';
+        cursorFollower.style.top = e.clientY + 'px';
+      }, 100);
+    });
+  }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.querySelector('.navbar-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (toggle && mobileMenu) {
+    toggle.addEventListener('click', function() {
+      mobileMenu.classList.toggle('active');
+    });
+  }
+});
+</script>
+<script src="ceviri.js"></script>
+</body>
+</html>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.6.0/tsparticles.bundle.min.js"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ once: true });
+   
+  // Update Indicator Position
+
+
+  // Update Active Link based on current page
+   // Mobile menu toggle
+        const toggleBtn = document.querySelector('.navbar-toggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        toggleBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+        // Menüden bir linke tıklanınca menüyü kapat
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                toggleBtn.classList.remove('active');
+            });
+        });
+        // Navbar scroll efekti (isteğe bağlı)
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        if (window.AOS) {
+            AOS.init({
+                duration: 1000,
+                once: true
+            });
+        }
+  // Remove scroll event listener since we're using multiple pages
+
+  // Vehicle Cards Interaction
+  const vehicleCards = document.querySelectorAll('.vehicle-card');
+  vehicleCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+          cursor.style.transform = 'scale(2)';
+          cursorFollower.style.transform = 'scale(2)';
+      });
+      card.addEventListener('mouseleave', () => {
+          cursor.style.transform = 'scale(1)';
+          cursorFollower.style.transform = 'scale(1)';
+      });
+  });
+  // Modal Functionality
+  const modal = document.querySelector('.modal');
+  const closeModal = document.querySelector('.close-modal');
+  const detailsBtns = document.querySelectorAll('.vehicle-details-btn');
+  detailsBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+          modal.style.display = 'block';
+          // Add vehicle details to modal
+          const vehicleCard = btn.closest('.vehicle-card');
+          const vehicleName = vehicleCard.querySelector('h3').textContent;
+          const vehicleSpecs = vehicleCard.querySelector('.vehicle-specs').innerHTML;
+          const modalContent = modal.querySelector('.modal-content');
+          modalContent.innerHTML = `
+              <span class="close-modal">&times;</span>
+              <h2>${vehicleName} Technical Details</h2>
+              <div class="modal-specs">${vehicleSpecs}</div>
+          `;
+      });
+  });
+  closeModal?.addEventListener('click', () => {
+      modal.style.display = 'none';
+  });
+  window.addEventListener('click', (e) => {
+      if (e.target === modal) {
+          modal.style.display = 'none';
+      }
+  });
+  // Statistics Animation
+  const stats = document.querySelectorAll('.stat-number');
+  const animateStats = () => {
+      stats.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-target'));
+          const duration = 2000;
+          const increment = target / (duration / 16);
+          let current = 0;
+          const updateStat = () => {
+              current += increment;
+              if (current < target) {
+                  stat.textContent = Math.floor(current);
+                  requestAnimationFrame(updateStat);
+              } else {
+                  stat.textContent = target;
+              }
+          };
+          updateStat();
+      });
+  };
+  // Trigger stats animation when in view
+  const statsSection = document.querySelector('.vehicle-stats');
+  const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              animateStats();
+              statsObserver.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.5 });
+  if (statsSection) {
+      statsObserver.observe(statsSection);
+  }
+  // Initialize AOS
+  AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+  }); 
+  function filterPosts(category) {
+    const cards = document.querySelectorAll('.blog-card');
+    if (category === 'Tümü') {
+      cards.forEach(card => {
+        card.style.display = 'flex';
+      });
+    } else {
+      cards.forEach(card => {
+        if (card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  }
+  function searchPosts(searchText) {
+    const cards = document.querySelectorAll('.blog-card');
+    const lowerSearch = searchText.toLowerCase();
+    cards.forEach(card => {
+      const title = card.getAttribute('data-title').toLowerCase();
+      if (title.includes(lowerSearch)) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+
+
+ 
+
+
+  
+</body>
+</html>
